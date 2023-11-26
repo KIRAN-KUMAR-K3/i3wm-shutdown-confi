@@ -1,35 +1,50 @@
-# i3wm-shutdown-confi
-#This config file is to be used only in i3wm for shutdown,reboot,and logout option
-# i3wm-shutdown-options
-> This is feature is for all the i3 users who have been struggling to set up customised shortcuts for shutdown,login and reboot options
-The snippet of code can be found down.<br>
-```bash
-#bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [s]hutdown"<br>
-mode "exit: [l]ogout, [r]eboot, [s]hutdown" {<br>
-<br>
-  bindsym l exec i3-msg exit<br>
-  bindsym r exec systemctl reboot<br>
-  bindsym s exec systemctl poweroff<br>
-  bindsym Escape mode "default"<br>
-  bindsym Return mode "default"<br>
-}<br>
-bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [s]hutdown" <br>
+# Custom Shutdown Options in i3wm Configuration
 
-```
+If you're an i3 user and want to easily set up personalized shortcuts for logout, reboot, and shutdown, here's a simple code snippet to add to your i3wm configuration file.
 
+## Configuration File Location
 
-
-
-> This is code of snippet for setting up the shortcuts,update the above code using the config file of i3wm.<br>
-> The path for the config file of i3wm is <br>
+The i3wm configuration file is typically located at:
 
 ```bash
-/home/_your_host_name/.config/i3/config  
+/home/_your_host_name/.config/i3/config
 ```
 
-> Using any text editor you can edit the config file. 
-# If you need to set up customised shortcuts <br>
+You can edit this file using any text editor of your choice.
+
+## Code Snippet
+
+Add the following lines to your i3 configuration file:
 
 ```bash
-bindsym $Your_custom_shortcut exec command_name  
+# Customized shutdown options
+bindsym $Your_custom_shortcut mode "exit: [l]ogout, [r]eboot, [s]hutdown"
+
+mode "exit: [l]ogout, [r]eboot, [s]hutdown" {
+  bindsym l exec i3-msg exit
+  bindsym r exec systemctl reboot
+  bindsym s exec systemctl poweroff
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+}
 ```
+
+Replace `$Your_custom_shortcut` with the key combination you want to use for accessing the shutdown options.
+
+## Example Usage
+
+For instance, if you want to use `Mod+x` as your shortcut, replace `$Your_custom_shortcut` with `$mod+x`:
+
+```bash
+bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [s]hutdown"
+```
+
+Now, when you press `Mod+x`, a menu will appear with options to logout (`l`), reboot (`r`), and shutdown (`s`). You can customize this according to your preferences.
+
+Remember to save the file and restart i3wm (or reload the configuration) for the changes to take effect:
+
+```bash
+i3-msg reload
+```
+
+Now, you have an easy and user-friendly way to perform these system actions in i3wm.
